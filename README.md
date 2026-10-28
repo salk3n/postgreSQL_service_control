@@ -1,18 +1,34 @@
 # PostgreSQL Service Control
 
-Made this script because I have PostgreSQL's service set to manual.
-(so it won't eat my RAM, CPU, etc)
+GUI replacement for `pgadmin_service_control.bat`. Manage the PostgreSQL
+Windows service and launch pgAdmin from a single window.
 
-in
-```bash
-if "%choice%"=="5" (
-    echo Opening pgAdmin...
-    start "" "C:\Program Files\PostgreSQL\18\pgAdmin 4\runtime\pgAdmin4.exe" 
-    pause
-    goto menu
-)
-```
-edit your directory if needed
+## Running from source
 
-![image](https://github.com/user-attachments/assets/9d1442be-1790-43c5-9587-b789bb293c32)
-p.s **RUN THIS AS AN ADMINISTRATOR!**
+    python pgadmin_service_control.py
+
+Requires Python 3.9+ on Windows. No external dependencies (uses only
+stdlib + tkinter, which ships with the Windows Python installer).
+
+## Building a standalone .exe
+
+    build.bat
+
+Requires PyInstaller (`pip install pyinstaller`). Output:
+`dist/PgAdminServiceControl.exe`. Place `icon.ico` next to build.bat to
+customize the exe icon.
+
+## Configuration
+
+On first run, `config.json` is created next to the exe (or script). If
+the directory is not writable (e.g., Program Files without elevation),
+it falls back to `%LOCALAPPDATA%\PgAdminServiceControl\config.json`.
+
+```json
+{
+  "service_name": "postgresql-x64-18",
+  "pgadmin_path": "C:\\Program Files\\PostgreSQL\\18\\pgAdmin 4\\runtime\\pgAdmin4.exe",
+  "auto_refresh": true,
+  "refresh_interval_seconds": 5,
+  "operation_timeout_seconds": 60
+}
