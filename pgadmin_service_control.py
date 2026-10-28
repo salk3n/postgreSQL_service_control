@@ -45,7 +45,7 @@ try:
     from PIL import Image, ImageDraw
     TRAY_AVAILABLE = True
     TRAY_IMPORT_ERROR = None
-except ImportError as e:                      # pragma: no cover
+except ImportError as e:
     pystray = None
     TRAY_AVAILABLE = False
     TRAY_IMPORT_ERROR = str(e)
@@ -63,18 +63,16 @@ LANGUAGES = ("en", "ru")
 LANG_DISPLAY = (("en", "English"), ("ru", "Русский"))
 
 STRINGS_EN = {
-    # App / status bar
     "app_title": "PostgreSQL Service Control",
     "status_ready": "Ready.",
     "status_busy": "Busy - please wait for the current operation to finish.",
     "status_done": "Done.",
     "status_done_errors": "Completed with errors - see output.",
-    "status_checking": "checking\u2026",
+    "status_checking": "checking…",
     "status_minimized": "Minimised to tray.",
     "word_unknown": "unknown",
     "word_defaults": "defaults",
 
-    # Menu
     "menu_service": "Service",
     "menu_tools": "Tools",
     "menu_file": "File",
@@ -83,62 +81,55 @@ STRINGS_EN = {
     "menu_restart": "Restart Service",
     "menu_refresh": "Refresh Status",
     "menu_pgadmin": "Open pgAdmin 4",
-    "menu_config": "Configuration\u2026",
+    "menu_config": "Configuration…",
     "menu_reload": "Reload config",
     "menu_exit": "Exit",
 
-    # Frames / labels
     "frame_service": "Service",
     "frame_output": "Output",
     "lbl_name": "Name:",
     "lbl_health": "Health:",
     "lbl_detail": "Detail:",
 
-    # Buttons / options
     "btn_start": "Start",
     "btn_stop": "Stop",
     "btn_restart": "Restart",
     "btn_refresh": "Refresh",
     "btn_pgadmin": "Open pgAdmin 4",
-    "btn_configuration": "Configuration\u2026",
+    "btn_configuration": "Configuration…",
     "btn_reload_config": "Reload config",
     "btn_relaunch": "Relaunch as Admin",
     "chk_auto_refresh": "Auto-refresh",
     "chk_health_probe": "Health probe",
 
-    # Admin banner / elevation
-    "banner_no_admin": "\u26a0  NOT RUNNING AS ADMINISTRATOR\nStart / Stop / Restart / recovery config will fail with 'Access denied'.\nStatus checks, health probe and pgAdmin launch still work.",
+    "banner_no_admin": "⚠  NOT RUNNING AS ADMINISTRATOR\nStart / Stop / Restart / recovery config will fail with 'Access denied'.\nStatus checks, health probe and pgAdmin launch still work.",
     "msg_already_elevated_title": "Already elevated",
     "msg_already_elevated": "This instance is already running as administrator.",
     "msg_elevation_cancelled_title": "Elevation cancelled",
     "msg_elevation_cancelled": "The UAC prompt was declined or failed.\n\nStatus checks, health probe and pgAdmin launch still work; service control requires elevation.",
 
-    # Dispatch status lines
-    "disp_start": "Starting service\u2026",
-    "disp_stop": "Stopping service\u2026",
-    "disp_restart": "Restarting service\u2026",
-    "disp_refresh": "Querying status\u2026",
-    "disp_pgadmin": "Launching pgAdmin\u2026",
+    "disp_start": "Starting service…",
+    "disp_stop": "Stopping service…",
+    "disp_restart": "Restarting service…",
+    "disp_refresh": "Querying status…",
+    "disp_pgadmin": "Launching pgAdmin…",
 
-    # Action names (toasts / output headers)
     "action_start": "START",
     "action_stop": "STOP",
     "action_restart": "RESTART",
     "action_refresh": "REFRESH",
     "action_pgadmin": "PGADMIN",
 
-    # Output panel lines
     "log_writing_to": "[log] Writing to {path}",
     "log_path_ok": "[check] pgAdmin path OK: {path}",
     "log_path_empty": "[config] pgadmin_path is empty - the pgAdmin button will not work.",
-    "log_path_missing": "[config] WARNING: pgAdmin executable NOT found at: {path}\n          Fix it under Configuration\u2026 > pgAdmin > Browse. The pgAdmin button will fail until corrected.",
+    "log_path_missing": "[config] WARNING: pgAdmin executable NOT found at: {path}\n          Fix it under Configuration… > pgAdmin > Browse. The pgAdmin button will fail until corrected.",
     "log_tray_missing": "[tray] pystray/Pillow unavailable ({err}). Tray icon and toast notifications disabled. Install with: pip install pystray Pillow",
     "log_advanced_unlocked": "[config] advanced_enabled=true - SCM write operations UNLOCKED.",
     "notify_enabled": "[notify] Notifications enabled.",
     "notify_disabled": "[notify] Notifications disabled.",
     "log_result_header": "== {action} @ {time} ==",
 
-    # Config warnings (rendered at display time)
     "w_parse_failed": "Could not parse {path}: {err}. Using defaults.",
     "w_root_not_object": "config.json root must be a JSON object. Using defaults.",
     "w_not_found": "config.json not found; defaults will be written on first save.",
@@ -152,7 +143,6 @@ STRINGS_EN = {
     "w_save_failed": "Could not write config.json to any known location.",
     "w_log_open_failed": "Could not open log file {path}: {err}. Logging disabled.",
 
-    # Service controller
     "err_cmd_not_found": "Command not found: {cmd}",
     "err_timeout": "Command timed out after {sec}s: {cmdline}",
     "err_exec_failed": "Could not execute {cmd}: {err}",
@@ -181,7 +171,6 @@ STRINGS_EN = {
     "ok_start_type": "Start type set to '{st}'.",
     "fail_sc_config": "sc config failed (exit code {rc}).",
 
-    # SCM state tokens (display forms)
     "st_STOPPED": "STOPPED",
     "st_RUNNING": "RUNNING",
     "st_START_PENDING": "START PENDING",
@@ -190,7 +179,6 @@ STRINGS_EN = {
     "st_PAUSE_PENDING": "PAUSE PENDING",
     "st_PAUSED": "PAUSED",
 
-    # Probe
     "probe_no_host": "probe skipped (no host configured)",
     "probe_bad_port": "probe skipped (invalid port {port})",
     "probe_alive": "postmaster responsive on {host}:{port} (SSL reply {reply})",
@@ -200,7 +188,6 @@ STRINGS_EN = {
     "probe_refused": "connection refused by {host}:{port} (nothing listening)",
     "probe_error": "probe error on {host}:{port}: {kind}: {err}",
 
-    # Health classification
     "h_error_label": "ERROR",
     "h_unknown_label": "UNKNOWN",
     "h_unknown_detail": "Could not parse sc.exe output.",
@@ -216,25 +203,21 @@ STRINGS_EN = {
     "h_port_busy_label": "STOPPED / PORT BUSY",
     "h_port_busy_detail": "Service is stopped but something else answers on that port.",
 
-    # pgAdmin launcher
     "pgadmin_no_path": "pgadmin_path is not set in configuration.",
     "pgadmin_not_found": "pgAdmin executable not found:\n{path}",
     "pgadmin_launch_failed": "Failed to launch pgAdmin: {err}",
     "pgadmin_launched": "Launched pgAdmin:\n{path}",
 
-    # Toasts
     "toast_op_complete": "Operation complete",
     "toast_op_failed": "Operation failed",
     "toast_transition_title": "PostgreSQL status changed",
     "toast_transition_body": "{svc}: {label}",
     "toast_body": "{action}: {summary}",
 
-    # Tray
     "tray_show_hide": "Show / Hide",
     "tray_notifications": "Notifications",
     "tray_quit": "Quit",
 
-    # Config dialog
     "dlg_title": "Configuration",
     "lbl_service_name": "Service name:",
     "btn_scan": "Scan",
@@ -249,7 +232,7 @@ STRINGS_EN = {
     "lbl_port": "Port:",
     "lbl_probe_timeout": "Timeout (s):",
     "frame_pgadmin": "pgAdmin",
-    "btn_browse": "Browse\u2026",
+    "btn_browse": "Browse…",
     "frame_behaviour": "Behaviour",
     "chk_auto_refresh_status": "Auto-refresh status",
     "chk_minimize_to_tray": "Minimize to tray",
@@ -268,8 +251,7 @@ STRINGS_EN = {
     "btn_cancel": "Cancel",
     "btn_apply": "Apply",
 
-    # Config dialog messages
-    "dlg_status_scanning": "Scanning registry for PostgreSQL services\u2026",
+    "dlg_status_scanning": "Scanning registry for PostgreSQL services…",
     "scan_failed_title": "Scan failed",
     "scan_none_title": "Scan",
     "scan_none": "No PostgreSQL-like services found in the registry.",
@@ -282,9 +264,9 @@ STRINGS_EN = {
     "msg_svc_empty": "Service name is empty.",
     "recovery_confirm_title": "Configure SCM recovery",
     "recovery_confirm_body": "Configure Windows to auto-restart '{svc}' on failure?\n\n  1st failure: restart after 5s\n  2nd failure: restart after 15s\n  later failures: restart after 60s\n  failure count resets after 24h\n\nThis changes the service configuration and requires administrator rights.",
-    "dlg_status_set_st": "Setting start type to '{st}'\u2026",
-    "dlg_status_query_st": "Querying start type\u2026",
-    "dlg_status_recovery": "Configuring SCM recovery\u2026",
+    "dlg_status_set_st": "Setting start type to '{st}'…",
+    "dlg_status_query_st": "Querying start type…",
+    "dlg_status_recovery": "Configuring SCM recovery…",
     "start_type_read_failed": "Could not read start type: {err}",
     "start_type_current": "Current start type: {name}",
     "start_type_reg_detail": "Registry Start value = {v}",
@@ -304,7 +286,7 @@ STRINGS_EN = {
     "v_int": "{label} must be a whole number.",
     "v_range": "{label} must be between {lo} and {hi}.",
     "v_theme": "Theme must be one of {themes}.",
-    "v_language": "Language must be English or \u0420\u0443\u0441\u0441\u043a\u0438\u0439.",
+    "v_language": "Language must be English or Русский.",
     "v_tray_missing": "System tray requested but pystray/Pillow are not installed.",
     "invalid_config_title": "Invalid configuration",
     "save_failed_title": "Save failed",
@@ -313,10 +295,10 @@ STRINGS_EN = {
     "reload_status": "Config reloaded from {path}.",
     "lang_restart_title": "Language changed",
     "lang_restart_body": "Language will be applied after the application is restarted.",
+    "lang_restart_body_ask": "Language changed. Restart the application now to apply the new language?",
 }
 
 STRINGS_RU = {
-    # App / status bar
     "app_title": "Управление службой PostgreSQL",
     "status_ready": "Готово.",
     "status_busy": "Занято — дождитесь завершения текущей операции.",
@@ -327,7 +309,6 @@ STRINGS_RU = {
     "word_unknown": "неизвестно",
     "word_defaults": "значения по умолчанию",
 
-    # Menu
     "menu_service": "Служба",
     "menu_tools": "Инструменты",
     "menu_file": "Файл",
@@ -337,51 +318,45 @@ STRINGS_RU = {
     "menu_refresh": "Обновить статус",
     "menu_pgadmin": "Открыть pgAdmin 4",
     "menu_config": "Настройки…",
-    "menu_reload": "Перечитать конфигурацию",
+    "menu_reload": "Перезапустить конфигурацию",
     "menu_exit": "Выход",
 
-    # Frames / labels
     "frame_service": "Служба",
     "frame_output": "Вывод",
     "lbl_name": "Имя:",
     "lbl_health": "Состояние:",
     "lbl_detail": "Детали:",
 
-    # Buttons / options
     "btn_start": "Пуск",
     "btn_stop": "Стоп",
     "btn_restart": "Перезапуск",
     "btn_refresh": "Обновить",
     "btn_pgadmin": "Открыть pgAdmin 4",
     "btn_configuration": "Настройки…",
-    "btn_reload_config": "Перечитать конфиг",
+    "btn_reload_config": "Перезапустить конфигурацию",
     "btn_relaunch": "Перезапустить от администратора",
     "chk_auto_refresh": "Автообновление",
-    "chk_health_probe": "Проверка здоровья",
+    "chk_health_probe": "Проверка статуса",
 
-    # Admin banner / elevation
-    "banner_no_admin": "\u26a0  ЗАПУЩЕНО НЕ ОТ ИМЕНИ АДМИНИСТРАТОРА\nПуск / Стоп / Перезапуск / настройка восстановления завершатся ошибкой «Отказано в доступе».\nПроверка статуса, здоровья и запуск pgAdmin продолжают работать.",
+    "banner_no_admin": "⚠  ЗАПУЩЕНО НЕ ОТ ИМЕНИ АДМИНИСТРАТОРА\nПуск / Стоп / Перезапуск / настройка восстановления завершатся ошибкой «Отказано в доступе».\nПроверка статуса и запуск pgAdmin продолжают работать.",
     "msg_already_elevated_title": "Права администратора",
     "msg_already_elevated": "Этот экземпляр уже запущен с правами администратора.",
     "msg_elevation_cancelled_title": "Повышение прав отменено",
     "msg_elevation_cancelled": "Запрос UAC был отклонён или не выполнен.\n\nПроверка статуса, здоровья и запуск pgAdmin работают; управление службой требует повышения прав.",
 
-    # Dispatch status lines
     "disp_start": "Запуск службы…",
     "disp_stop": "Остановка службы…",
     "disp_restart": "Перезапуск службы…",
     "disp_refresh": "Запрос статуса…",
     "disp_pgadmin": "Запуск pgAdmin…",
 
-    # Action names (toasts / output headers)
     "action_start": "ПУСК",
     "action_stop": "СТОП",
     "action_restart": "ПЕРЕЗАПУСК",
     "action_refresh": "ОБНОВЛЕНИЕ",
     "action_pgadmin": "PGADMIN",
 
-    # Output panel lines
-    "log_writing_to": "[журнал] Запись в {path}",
+    "log_writing_to": "[логи] Запись в {path}",
     "log_path_ok": "[проверка] Путь к pgAdmin корректен: {path}",
     "log_path_empty": "[конфиг] pgadmin_path пуст — кнопка pgAdmin не будет работать.",
     "log_path_missing": "[конфиг] ВНИМАНИЕ: исполняемый файл pgAdmin НЕ найден: {path}\n          Исправьте в Настройки… > pgAdmin > Обзор. Кнопка pgAdmin не будет работать.",
@@ -391,7 +366,6 @@ STRINGS_RU = {
     "notify_disabled": "[уведомления] Уведомления отключены.",
     "log_result_header": "== {action} @ {time} ==",
 
-    # Config warnings
     "w_parse_failed": "Не удалось разобрать {path}: {err}. Используются значения по умолчанию.",
     "w_root_not_object": "Корень config.json должен быть объектом JSON. Используются значения по умолчанию.",
     "w_not_found": "config.json не найден; значения по умолчанию будут записаны при первом сохранении.",
@@ -403,9 +377,8 @@ STRINGS_RU = {
     "w_unknown_keys": "Игнорируются неизвестные ключи конфигурации: {keys}",
     "w_saved_elsewhere": "Не удалось записать {path}; сохранено в {other}. Переносимый config.json имеет приоритет при следующем запуске — удалите один из файлов во избежание путаницы.",
     "w_save_failed": "Не удалось записать config.json ни в одно известное расположение.",
-    "w_log_open_failed": "Не удалось открыть файл журнала {path}: {err}. Журналирование отключено.",
+    "w_log_open_failed": "Не удалось открыть файл логов {path}: {err}. Логирование отключено.",
 
-    # Service controller
     "err_cmd_not_found": "Команда не найдена: {cmd}",
     "err_timeout": "Тайм-аут команды после {sec} с: {cmdline}",
     "err_exec_failed": "Не удалось выполнить {cmd}: {err}",
@@ -434,7 +407,6 @@ STRINGS_RU = {
     "ok_start_type": "Тип запуска установлен в '{st}'.",
     "fail_sc_config": "sc config завершилась с ошибкой (код {rc}).",
 
-    # SCM state tokens (display forms)
     "st_STOPPED": "ОСТАНОВЛЕНА",
     "st_RUNNING": "ЗАПУЩЕНА",
     "st_START_PENDING": "ЗАПУСКАЕТСЯ",
@@ -443,7 +415,6 @@ STRINGS_RU = {
     "st_PAUSE_PENDING": "ПРИОСТАНАВЛИВАЕТСЯ",
     "st_PAUSED": "НА ПАУЗЕ",
 
-    # Probe
     "probe_no_host": "проверка пропущена (хост не настроен)",
     "probe_bad_port": "проверка пропущена (некорректный порт {port})",
     "probe_alive": "postmaster отвечает на {host}:{port} (ответ SSL {reply})",
@@ -453,7 +424,6 @@ STRINGS_RU = {
     "probe_refused": "соединение отклонено {host}:{port} (ничего не слушает)",
     "probe_error": "ошибка проверки на {host}:{port}: {kind}: {err}",
 
-    # Health classification
     "h_error_label": "ОШИБКА",
     "h_unknown_label": "НЕИЗВЕСТНО",
     "h_unknown_detail": "Не удалось разобрать вывод sc.exe.",
@@ -469,25 +439,21 @@ STRINGS_RU = {
     "h_port_busy_label": "ОСТАНОВЛЕНА / ПОРТ ЗАНЯТ",
     "h_port_busy_detail": "Служба остановлена, но на порту отвечает другой процесс.",
 
-    # pgAdmin launcher
     "pgadmin_no_path": "pgadmin_path не задан в конфигурации.",
     "pgadmin_not_found": "Исполняемый файл pgAdmin не найден:\n{path}",
     "pgadmin_launch_failed": "Не удалось запустить pgAdmin: {err}",
     "pgadmin_launched": "Запущен pgAdmin:\n{path}",
 
-    # Toasts
     "toast_op_complete": "Операция выполнена",
     "toast_op_failed": "Ошибка операции",
     "toast_transition_title": "Статус PostgreSQL изменился",
     "toast_transition_body": "{svc}: {label}",
     "toast_body": "{action}: {summary}",
 
-    # Tray
     "tray_show_hide": "Показать / Скрыть",
     "tray_notifications": "Уведомления",
     "tray_quit": "Выход",
 
-    # Config dialog
     "dlg_title": "Настройки",
     "lbl_service_name": "Имя службы:",
     "btn_scan": "Поиск",
@@ -508,12 +474,12 @@ STRINGS_RU = {
     "chk_minimize_to_tray": "Сворачивать в трей",
     "chk_system_tray": "Значок в системном трее",
     "chk_toast": "Всплывающие уведомления",
-    "chk_write_log": "Писать файл журнала",
+    "chk_write_log": "Писать файл логов",
     "lbl_language": "Язык:",
     "lbl_theme": "Тема:",
     "lbl_refresh_s": "Обновление (с):",
     "lbl_op_timeout": "Тайм-аут операции (с):",
-    "lbl_log_mb": "Журнал (МБ):",
+    "lbl_log_mb": "Логи (МБ):",
     "lbl_backups": "Резервные копии:",
     "tray_missing_dlg": "pystray / Pillow недоступны ({err}).\nЗначок в трее и уведомления отключены. Установка: pip install pystray Pillow",
     "btn_reset_defaults": "Сбросить по умолчанию",
@@ -521,7 +487,6 @@ STRINGS_RU = {
     "btn_cancel": "Отмена",
     "btn_apply": "Применить",
 
-    # Config dialog messages
     "dlg_status_scanning": "Поиск служб PostgreSQL в реестре…",
     "scan_failed_title": "Поиск не удался",
     "scan_none_title": "Поиск",
@@ -566,6 +531,7 @@ STRINGS_RU = {
     "reload_status": "Конфигурация перечитана из {path}.",
     "lang_restart_title": "Язык изменён",
     "lang_restart_body": "Язык будет применён после перезапуска приложения.",
+    "lang_restart_body_ask": "Язык изменён. Перезапустить приложение сейчас, чтобы применить новый язык?",
 }
 
 STRINGS = {"en": STRINGS_EN, "ru": STRINGS_RU}
@@ -632,7 +598,7 @@ DEFAULT_CONFIG = {
     "probe_timeout_seconds": 3,
     "auto_refresh": True,
     "refresh_interval_seconds": 5,
-    "operation_timeout_seconds": 300,   # production shutdown checkpoints can exceed 60s
+    "operation_timeout_seconds": 300,
     "theme": "light",
     "language": "en",
     "tray_enabled": True,
@@ -641,7 +607,7 @@ DEFAULT_CONFIG = {
     "log_enabled": True,
     "log_max_mb": 2,
     "log_backups": 5,
-    "advanced_enabled": False,          # production safety gate for SCM writes
+    "advanced_enabled": False,
 }
 
 VALID_THEMES = ("light", "dark")
@@ -703,12 +669,7 @@ def resolve_data_dir(preferred=None):
 
 
 class Config:
-    """config.json with validation, portable-first resolution, writable fallback.
-
-    NOTE: warnings are stored as (key, params) tuples, NOT rendered strings,
-    because they are produced before the UI language is known. Render with
-    tr()/tr_en() at display time.
-    """
+    """config.json with validation, portable-first resolution, writable fallback."""
 
     def __init__(self):
         self.path = None
@@ -750,7 +711,6 @@ class Config:
             if key not in raw:
                 continue
             val = raw[key]
-            # bool MUST be checked before int (bool is a subclass of int)
             if isinstance(default, bool):
                 self.data[key] = bool(val)
             elif isinstance(default, int):
@@ -810,7 +770,7 @@ class Config:
         return False
 
     def reset_to_defaults(self):
-        self.data = dict(DEFAULT_CONFIG)   # re-locks advanced_enabled deliberately
+        self.data = dict(DEFAULT_CONFIG)
         self.warnings = []
         return self.save()
 
@@ -819,7 +779,7 @@ class Config:
 
 
 # ---------------------------------------------------------------------------
-# Logging (file audit log is ALWAYS English)
+# Logging
 # ---------------------------------------------------------------------------
 
 def setup_logging(cfg):
@@ -859,15 +819,11 @@ def setup_logging(cfg):
 
 
 # ---------------------------------------------------------------------------
-# Health probe (credential-free PostgreSQL wire protocol check)
+# Health probe
 # ---------------------------------------------------------------------------
 
 def probe_postgres(host, port, timeout=3.0):
-    """Send an SSLRequest packet; a live postmaster replies b'S' or b'N'.
-
-    Requires no credentials and performs no authentication.
-    Returns (alive: bool|None, detail: str).
-    """
+    """Send an SSLRequest packet; a live postmaster replies b'S' or b'N'."""
     if not host:
         return None, tr("probe_no_host")
     try:
@@ -895,16 +851,11 @@ def probe_postgres(host, port, timeout=3.0):
 
 
 # ---------------------------------------------------------------------------
-# Service discovery (registry - stdlib, instant, no console)
+# Service discovery
 # ---------------------------------------------------------------------------
 
 def discover_postgres_services(hints=("postgres", "postgresql", "pgsql")):
-    """Enumerate installed services that look like PostgreSQL.
-
-    Reads HKLM\\SYSTEM\\CurrentControlSet\\Services (no admin required).
-    CAVEAT: the registry also lists leftovers from uninstalled versions.
-    Callers must validate with sc query before use.
-    """
+    """Enumerate installed services that look like PostgreSQL."""
     found = {}
     root_path = r"SYSTEM\CurrentControlSet\Services"
     try:
@@ -1002,9 +953,7 @@ class ServiceController:
         return rc, (out + "\n" + err).strip()
 
     def query_state(self):
-        """Returns (state_token|None, raw). Raises ServiceError if unusable.
-        The state token stays English (functional identifier); translation is
-        a display-time concern."""
+        """Returns (state_token|None, raw). Raises ServiceError if unusable."""
         rc, raw = self.query_raw()
         if rc == 0:
             m = _STATE_RE.search(raw)
@@ -1076,8 +1025,7 @@ class ServiceController:
         return OpResult(r.ok, tr("restart_complete", lines="\n".join(lines)), r.detail)
 
     def configure_recovery(self):
-        """Native SCM recovery. Survives reboots; runs without this app.
-        NOTE: sc.exe requires the literal space after 'actions='."""
+        """Native SCM recovery. Survives reboots; runs without this app."""
         rc, out, err = self._run([
             "sc", "failure", self.service_name,
             "reset=", "86400",
@@ -1106,14 +1054,14 @@ class ServiceController:
 
 
 # ---------------------------------------------------------------------------
-# Health classification (SCM x probe)
+# Health classification
 # ---------------------------------------------------------------------------
 
 @dataclass
 class Health:
-    key: str          # language-stable identifier, used for transition detection
-    label: str        # translated display label
-    tone: str         # palette key: ok / warn / err / muted
+    key: str
+    label: str
+    tone: str
     scm_state: str = ""
     probe_alive: object = None
     detail: str = ""
@@ -1235,22 +1183,11 @@ def request_elevation():
 # Single-instance enforcement
 # ---------------------------------------------------------------------------
 
-_INSTANCE_MUTEX = None   # module global on purpose - see acquire_single_instance
+_INSTANCE_MUTEX = None
 
 
 def acquire_single_instance():
-    """Acquire a named mutex so only one instance can run.
-
-    Returns the handle, or None if another instance already holds it.
-    The handle is stored in a module global deliberately: if it is garbage
-    collected, CPython closes it and the mutex silently vanishes.
-
-    ctypes notes (both are classic silent-corruption bugs on 64-bit Windows):
-      * HANDLE is pointer-sized - without restype=c_void_p the default c_int
-        truncates 64-bit handles.
-      * Without argtypes, str arguments are marshalled as ANSI, which would
-        feed garbage to W-suffixed APIs.
-    """
+    """Acquire a named mutex so only one instance can run."""
     global _INSTANCE_MUTEX
     kernel32 = ctypes.windll.kernel32
     kernel32.CreateMutexW.restype = ctypes.c_void_p
@@ -1261,7 +1198,7 @@ def acquire_single_instance():
     handle = kernel32.CreateMutexW(None, False, APP_DIR_NAME + ".SingleInstance")
     if not handle:
         return None
-    if kernel32.GetLastError() == 183:          # ERROR_ALREADY_EXISTS
+    if kernel32.GetLastError() == 183:
         kernel32.CloseHandle(handle)
         return None
     _INSTANCE_MUTEX = handle
@@ -1279,7 +1216,7 @@ def notify_already_running():
         "PostgreSQL Service Control is already running.\n\n"
         "If you cannot see its window, check the system tray for its icon.",
         "PostgreSQL Service Control",
-        0x40,                                    # MB_ICONINFORMATION
+        0x40,
     )
 
 
@@ -1313,12 +1250,7 @@ DARK = {
 # ---------------------------------------------------------------------------
 
 class ConfigDialog(tk.Toplevel):
-    """In-app editor for config.json. Modal; writes through Config.save().
-
-    advanced_enabled is deliberately NOT editable here: the config file is
-    the only unlock path for SCM write operations (production safety).
-    Language changes apply after restart (fixed for process lifetime).
-    """
+    """In-app editor for config.json. Modal; writes through Config.save()."""
 
     def __init__(self, master, cfg):
         super().__init__(master)
@@ -1363,15 +1295,20 @@ class ConfigDialog(tk.Toplevel):
         row.pack(fill="x")
         ttk.Label(row, text=tr("lbl_start_type"), width=18, anchor="w").pack(side="left")
         self.start_type_var = tk.StringVar(value=tr("st_query"))
-        # Querying start type is READ-only and stays always enabled.
-        # The functional values stay English sc.exe tokens - never localized.
+        
+        # Map display names to tokens for proper localization handling
+        self._st_display_to_token = {
+            tr("st_query"): None,
+            tr("stt_auto"): "auto",
+            tr("stt_demand"): "demand",
+            tr("stt_disabled"): "disabled",
+        }
         self.st_combo = ttk.Combobox(
             row, textvariable=self.start_type_var, width=14, state="readonly",
-            values=[tr("st_query"), "auto", "demand", "disabled"],
+            values=list(self._st_display_to_token.keys()),
         )
         self.st_combo.pack(side="left")
 
-        # WRITE operations are gated behind advanced_enabled.
         self.st_apply_btn = ttk.Button(row, text=tr("btn_apply_start_type"),
                                        command=self._apply_start_type)
         self.st_apply_btn.pack(side="left", padx=6)
@@ -1483,7 +1420,6 @@ class ConfigDialog(tk.Toplevel):
         ttk.Button(btns, text=tr("btn_cancel"), command=self._cancel).pack(side="right")
         ttk.Button(btns, text=tr("btn_apply"), command=self._apply).pack(side="right", padx=6)
 
-    # -- actions ----------------------------------------------------------
     def _scan(self):
         self.master._set_status(tr("dlg_status_scanning"))
         threading.Thread(target=self._scan_worker, daemon=True).start()
@@ -1537,9 +1473,9 @@ class ConfigDialog(tk.Toplevel):
     def _apply_start_type(self):
         if not self._gate_or_warn():
             return
-        st = self.start_type_var.get()
-        # Anything that is not a real sc.exe token means "(query)".
-        if st not in ("auto", "demand", "disabled"):
+        st_display = self.start_type_var.get()
+        st = self._st_display_to_token.get(st_display)
+        if st is None:
             self._query_start_type()
             return
         svc = self.vars["service_name"].get().strip()
@@ -1601,7 +1537,7 @@ class ConfigDialog(tk.Toplevel):
             return OpResult(False, tr("start_type_read_failed", err=e))
         names = {0: "boot", 1: "system", 2: "auto", 3: "demand", 4: "disabled"}
         token = names.get(start, f"unknown({start})")
-        display = tr("stt_" + token) if token in names else token
+        display = tr("stt_" + token) if token in names.values() else token
         return OpResult(True, tr("start_type_current", name=display),
                         tr("start_type_reg_detail", v=start))
 
@@ -1613,7 +1549,15 @@ class ConfigDialog(tk.Toplevel):
             if m:
                 names = {"0": "boot", "1": "system", "2": "auto", "3": "demand", "4": "disabled"}
                 token = names.get(m.group(1))
-                self.start_type_var.set(tr("stt_" + token) if token else tr("st_query"))
+                if token:
+                    for disp, tok in self._st_display_to_token.items():
+                        if tok == token:
+                            self.start_type_var.set(disp)
+                            break
+                    else:
+                        self.start_type_var.set(tr("st_query"))
+                else:
+                    self.start_type_var.set(tr("st_query"))
         if res.ok:
             messagebox.showinfo(tr("dlg_success_title"),
                                 res.summary + ("\n\n" + res.detail if res.detail else ""), parent=self)
@@ -1645,11 +1589,7 @@ class ConfigDialog(tk.Toplevel):
                                  tr("open_config_err", path=self.cfg.path, err=e), parent=self)
 
     def _collect(self):
-        """Validate dialog fields into a config dict. Raises ValueError on bad input.
-
-        NOTE: advanced_enabled is copied through untouched - it cannot be
-        changed from this dialog by design.
-        """
+        """Validate dialog fields into a config dict. Raises ValueError on bad input."""
         out = dict(self.cfg.data)
         svc = self.vars["service_name"].get().strip()
         if not svc:
@@ -1711,9 +1651,11 @@ class ConfigDialog(tk.Toplevel):
         self.saved = True
         log.info("Configuration updated via dialog; saved to %s", self.cfg.path)
         if new["language"] != old.get("language"):
-            log.info("Language changed %s -> %s (applies after restart)",
-                     old.get("language"), new["language"])
-            messagebox.showinfo(tr("lang_restart_title"), tr("lang_restart_body"), parent=self)
+            log.info("Language changed %s -> %s", old.get("language"), new["language"])
+            if messagebox.askyesno(tr("lang_restart_title"), tr("lang_restart_body_ask"), parent=self):
+                self.master._needs_restart = True
+            else:
+                messagebox.showinfo(tr("lang_restart_title"), tr("lang_restart_body"), parent=self)
         try:
             self.grab_release()
         except tk.TclError:
@@ -1737,7 +1679,7 @@ class App(tk.Tk):
         super().__init__()
 
         self.cfg = Config()
-        set_language(self.cfg.get("language"))     # fixed for process lifetime
+        set_language(self.cfg.get("language"))
         self.log_path = setup_logging(self.cfg)
         log.info("=" * 70)
         log.info("Startup | admin=%s | frozen=%s | python=%s | lang=%s | config=%s",
@@ -1764,6 +1706,7 @@ class App(tk.Tk):
         self._health_seeded = False
         self._hidden = False
         self._closing = False
+        self._needs_restart = False
 
         self.icon = None
         self.icon_color = None
@@ -1783,7 +1726,6 @@ class App(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self._on_close)
         self.bind("<Unmap>", self._on_unmap)
 
-    # -- style / theme ----------------------------------------------------
     def _build_style(self):
         self.style = ttk.Style(self)
 
@@ -1821,11 +1763,7 @@ class App(tk.Tk):
     def _bind_accelerators(self):
         """Alt chords are bound on the typed CHARACTER, so Alt+C works on
         Latin layouts and Alt+С (Cyrillic es, same physical key) works on
-        Russian layouts. Digits are layout-stable.
-
-        While any grab is active (modal dialog, open Combobox popup), action
-        shortcuts are suppressed so they never act behind a dialog's back.
-        """
+        Russian layouts. Digits are layout-stable."""
         self.bind_all("<Alt-KeyPress>", self._accel_alt_key, add="+")
         self.bind_all("<Escape>", self._accel_escape, add="+")
 
@@ -1835,7 +1773,7 @@ class App(tk.Tk):
         ch = (event.char or "").lower()
         action = {
             "1": "start", "2": "stop", "3": "restart", "4": "refresh", "5": "pgadmin",
-            "c": "config", "\u0441": "config",   # Latin c + Cyrillic с
+            "c": "config", "\u0441": "config",
         }.get(ch)
         if action is None:
             return
@@ -1897,7 +1835,6 @@ class App(tk.Tk):
                                  arrowcolor=pal["fg"])
             self.style.map("Vertical.TScrollbar", background=[("active", pal["accent"])])
 
-        # tk (non-ttk) widgets always need explicit colors
         self.configure(bg=pal["bg"])
         self.statusbar.config(bg=pal["card"], fg=pal["fg"], relief="sunken")
         self.status_indicator.config(bg=pal["bg"])
@@ -1911,7 +1848,6 @@ class App(tk.Tk):
         self.log.tag_configure("warn", foreground=pal["warn"])
         self.log.tag_configure("raw", foreground=pal["raw"])
 
-        # Menu bar (tk.Menu is not themed by ttk)
         try:
             self.menubar.config(bg=pal["card"], fg=pal["fg"], activebackground=pal["accent"],
                                 activeforeground=pal["card_fg"], relief="flat", bd=0)
@@ -1932,7 +1868,6 @@ class App(tk.Tk):
         self._apply_theme()
         log.info("Theme switched to '%s'", name)
 
-    # -- widgets ----------------------------------------------------------
     def _build_widgets(self):
         self.statusbar = tk.Label(self, text=tr("status_ready"), anchor="w", padx=6, pady=3)
         self.statusbar.pack(fill="x", side="bottom")
@@ -1940,7 +1875,6 @@ class App(tk.Tk):
         self.body = ttk.Frame(self)
         self.body.pack(side="top", fill="both", expand=True)
 
-        # Service info
         self.info_frame = ttk.LabelFrame(self.body, text=tr("frame_service"))
         self.info_frame.pack(fill="x", padx=10, pady=(8, 4))
 
@@ -1954,7 +1888,7 @@ class App(tk.Tk):
         row2 = ttk.Frame(self.info_frame)
         row2.pack(fill="x", padx=8, pady=(0, 2))
         ttk.Label(row2, text=tr("lbl_health"), width=9, anchor="w").pack(side="left")
-        self.status_indicator = tk.Label(row2, text=" \u25cf ", font=("Segoe UI", 14, "bold"), fg="#888888")
+        self.status_indicator = tk.Label(row2, text=" ● ", font=("Segoe UI", 14, "bold"), fg="#888888")
         self.status_indicator.pack(side="left", padx=(0, 4))
         self.status_var = tk.StringVar(value=tr("status_checking"))
         ttk.Label(row2, textvariable=self.status_var,
@@ -1967,7 +1901,6 @@ class App(tk.Tk):
         ttk.Label(row3, textvariable=self.detail_var, wraplength=520,
                   justify="left", font=("Segoe UI", 8)).pack(side="left", fill="x", expand=True)
 
-        # Admin banner (packed with 'before' so it stays on top when re-shown)
         self.admin_frame = ttk.Frame(self.body)
         self.admin_label = tk.Label(
             self.admin_frame, text="", anchor="w", justify="left", wraplength=440,
@@ -1978,7 +1911,6 @@ class App(tk.Tk):
                                       command=self._relaunch_as_admin, width=22)
         self.elevate_btn.pack(side="right", padx=8)
 
-        # Buttons
         btns = ttk.Frame(self.body)
         btns.pack(fill="x", padx=10, pady=4)
         self.btn_start = ttk.Button(btns, text=tr("btn_start"), command=lambda: self._dispatch("start"))
@@ -1989,7 +1921,6 @@ class App(tk.Tk):
         for b in (self.btn_start, self.btn_stop, self.btn_restart, self.btn_refresh, self.btn_pgadmin):
             b.pack(side="left", expand=True, fill="x", padx=3)
 
-        # Options row
         opts = ttk.Frame(self.body)
         opts.pack(fill="x", padx=10, pady=(0, 2))
         self.auto_var = tk.BooleanVar(value=bool(self.cfg.get("auto_refresh")))
@@ -2001,7 +1932,6 @@ class App(tk.Tk):
         ttk.Button(opts, text=tr("btn_configuration"), command=self._open_config_dialog).pack(side="right")
         ttk.Button(opts, text=tr("btn_reload_config"), command=self._reload_config).pack(side="right", padx=4)
 
-        # Output (tk.Text + ttk.Scrollbar so it themes correctly)
         logf = ttk.LabelFrame(self.body, text=tr("frame_output"))
         logf.pack(fill="both", expand=True, padx=10, pady=(6, 10))
         inner = ttk.Frame(logf)
@@ -2022,12 +1952,11 @@ class App(tk.Tk):
         self.admin_frame.pack(side="top", fill="x", padx=10, pady=(8, 0),
                               before=self.info_frame)
 
-    # -- startup checks -----------------------------------------------------
     def _log_startup_warnings(self):
         for key, params in self.cfg.warnings:
             text = tr(key, **params)
             self._append_log(f"[config] {text}", "err")
-            log.warning("config: %s", tr_en(key, **params))   # audit log stays English
+            log.warning("config: %s", tr_en(key, **params))
         if self.log_path:
             self._append_log(tr("log_writing_to", path=self.log_path), "hdr")
         if not TRAY_AVAILABLE:
@@ -2037,11 +1966,7 @@ class App(tk.Tk):
             log.warning("advanced_enabled is TRUE - SCM write operations unlocked.")
 
     def _check_pgadmin_path(self):
-        """One-time validation of pgadmin_path.
-
-        Catches the common failure mode where a PostgreSQL/pgAdmin minor
-        update moves the exe and the button silently breaks until needed.
-        """
+        """One-time validation of pgadmin_path."""
         raw = self.cfg.get("pgadmin_path") or ""
         if not raw.strip():
             self._append_log(tr("log_path_empty"), "warn")
@@ -2055,7 +1980,6 @@ class App(tk.Tk):
             self._append_log(tr("log_path_missing", path=expanded), "warn")
             log.warning("pgAdmin executable not found at configured path: %s", expanded)
 
-    # -- tray -------------------------------------------------------------
     def _tray_icon_image(self, tone):
         color = {
             "ok": (35, 160, 60, 255),
@@ -2119,14 +2043,8 @@ class App(tk.Tk):
         except Exception as e:
             log.debug("Tray icon update failed: %s", e)
 
-    # -- notifications ------------------------------------------------------
     def _toast(self, title, message):
-        """Windows toast via the tray icon (Shell_NotifyIcon NIF_INFO).
-
-        Hard requirement: an ACTIVE tray icon. Windows has no stdlib toast
-        channel that bypasses the tray. Every decision is logged so silent
-        failures are diagnosable in service_control.log.
-        """
+        """Windows toast via the tray icon (Shell_NotifyIcon NIF_INFO)."""
         log.info("NOTIFY | %s | %s", title, message.replace("\n", " "))
 
         if not self.cfg.get("toast_enabled"):
@@ -2159,8 +2077,7 @@ class App(tk.Tk):
             pass
 
     def _toggle_toast(self):
-        # Guard: if the Configuration dialog is open (modal grab), ignore the
-        # tray toggle - otherwise the dialog's Apply would silently overwrite it.
+        """Toggle notifications on/off from tray menu."""
         if self.grab_current() is not None:
             return
         new = not bool(self.cfg.get("toast_enabled"))
@@ -2170,7 +2087,6 @@ class App(tk.Tk):
         self._append_log(tr("notify_enabled") if new else tr("notify_disabled"), "hdr")
         log.info("toast_enabled=%s (toggled from tray)", new)
 
-    # -- dispatch / workers ----------------------------------------------
     def _dispatch(self, action):
         if self.busy:
             self._set_status(tr("status_busy"))
@@ -2251,7 +2167,6 @@ class App(tk.Tk):
         finally:
             self._polling = False
 
-    # -- queue draining (main thread only) --------------------------------
     def _drain_queues(self):
         processed = False
 
@@ -2281,8 +2196,6 @@ class App(tk.Tk):
                 if outcome.snapshot is not None:
                     self._apply_snapshot(outcome.snapshot, notify_transitions=False)
 
-                # Toast on every manual operation result (success AND failure).
-                # Refresh stays silent by design.
                 if outcome.action in ("start", "stop", "restart", "pgadmin"):
                     body = tr("toast_body", action=tr("action_" + outcome.action),
                               summary=outcome.result.summary)
@@ -2330,7 +2243,6 @@ class App(tk.Tk):
             self._health_seeded = True
         self._last_health_key = h.key
 
-    # -- refresh scheduling ----------------------------------------------
     def _on_auto_toggle(self):
         self._schedule_refresh(immediate=self.auto_var.get())
 
@@ -2352,7 +2264,6 @@ class App(tk.Tk):
         self._silent_refresh()
         self._schedule_refresh()
 
-    # -- window visibility ------------------------------------------------
     def _toggle_visibility(self):
         if self._hidden:
             self._show_window()
@@ -2383,7 +2294,6 @@ class App(tk.Tk):
         except tk.TclError:
             pass
 
-    # -- logging widgets --------------------------------------------------
     def _append_log(self, text, tag=None):
         self.log.config(state="normal")
         self.log.insert("end", text + "\n", tag)
@@ -2406,7 +2316,6 @@ class App(tk.Tk):
                 self._append_log(line, "raw")
         self._append_log("")
 
-    # -- config actions ---------------------------------------------------
     def _open_config_dialog(self):
         try:
             dlg = ConfigDialog(self, self.cfg)
@@ -2416,6 +2325,8 @@ class App(tk.Tk):
         self.wait_window(dlg)
         if dlg.saved:
             self._after_config_change(reinit_logging=True)
+            if getattr(self, "_needs_restart", False):
+                self._restart_app()
 
     def _reload_config(self):
         self.cfg.load()
@@ -2432,7 +2343,6 @@ class App(tk.Tk):
         self.auto_var.set(bool(self.cfg.get("auto_refresh")))
         self.probe_var.set(bool(self.cfg.get("probe_enabled")))
         self._set_theme(self.cfg.get("theme", "light"))
-        # NOTE: language is intentionally NOT applied here - restart required.
 
         self._log_startup_warnings()
         self._check_pgadmin_path()
@@ -2453,7 +2363,52 @@ class App(tk.Tk):
             messagebox.showwarning(tr("msg_elevation_cancelled_title"),
                                    tr("msg_elevation_cancelled"))
 
-    # -- misc -------------------------------------------------------------
+    def _restart_app(self):
+        """Restart the application, preserving elevation state and releasing the mutex."""
+        global _INSTANCE_MUTEX
+        
+        log.info("Restarting application...")
+        
+        # Clean up tray icon to prevent ghosting
+        if self.icon is not None:
+            try: self.icon.stop()
+            except Exception: pass
+            self.icon = None
+            
+        # Flush and close log handlers
+        logging.shutdown()
+        
+        # Release the single-instance mutex
+        if _INSTANCE_MUTEX is not None:
+            try:
+                kernel32 = ctypes.windll.kernel32
+                kernel32.CloseHandle.argtypes = [ctypes.c_void_p]
+                kernel32.CloseHandle(_INSTANCE_MUTEX)
+            except Exception as e:
+                log.warning("Failed to close mutex handle: %s", e)
+            _INSTANCE_MUTEX = None
+            
+        # Build the command line
+        exe = sys.executable
+        if getattr(sys, "frozen", False):
+            args = [exe]
+        else:
+            args = [exe, os.path.abspath(__file__)]
+            
+        # Spawn the new process (inherits elevation token)
+        try:
+            subprocess.Popen(
+                args,
+                close_fds=True,
+                creationflags=CREATE_NEW_PROCESS_GROUP | DETACHED_PROCESS
+            )
+        except Exception as e:
+            log.error("Failed to spawn new process: %s", e)
+            
+        # Exit the current process
+        self.destroy()
+        sys.exit(0)
+
     def _set_status(self, text):
         self.statusbar.config(text=text)
 
@@ -2485,9 +2440,6 @@ class App(tk.Tk):
 
 
 def main():
-    # Single instance: refuse a second copy before creating any window.
-    # (The already-running message is deliberately English: it fires before
-    # config - and therefore the language - is read.)
     if acquire_single_instance() is None:
         notify_already_running()
         return 0
@@ -2500,8 +2452,6 @@ def main():
         except Exception:
             continue
 
-    # Without an explicit AppUserModelID, Win10/11 may attribute toasts to a
-    # generic publisher or suppress them entirely.
     try:
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_USER_MODEL_ID)
     except Exception:
