@@ -40,7 +40,8 @@ PostgreSQL (пакет `SSLRequest` — **учётные данные нигде
 
 ## Скриншоты
 
-<!-- Добавьте скриншоты: docs/screenshot_light.png, docs/screenshot_dark.png -->
+<img width="682" height="684" alt="PgAdminServiceControl_FlaVHUsEJ6" src="https://github.com/user-attachments/assets/3f06a700-a203-4502-8a1b-bd32bc824517" />
+<img width="643" height="617" alt="PgAdminServiceControl_AFw7tBL8Fd" src="https://github.com/user-attachments/assets/38c07eca-5cef-49f8-90c5-e261f5e1056f" /> 
 
 ---
 
