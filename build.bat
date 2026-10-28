@@ -34,15 +34,6 @@ if errorlevel 1 (
 )
 
 echo.
-echo ============================================================
-echo  Build complete: dist\PgAdminServiceControl.exe
-echo.
-echo  * config.json is created next to the exe on first run.
-echo    If that folder is not writable it falls back to
-echo    %%LOCALAPPDATA%%\PgAdminServiceControl\
-echo  * Logs go to the same directory: service_control.log
-echo  * The exe does NOT force UAC. Right-click -^> "Run as
-echo    administrator" when you need to control the service.
-echo ============================================================
+echo Build complete: dist\PgAdminServiceControl.exe
 popd
 pause
