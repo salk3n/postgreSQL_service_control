@@ -3,7 +3,7 @@
 > GUI replacement for `pgadmin_service_control.bat` — manage the PostgreSQL
 > Windows service, watch its real health, and launch pgAdmin from one window.
 
-**[Русская версия](README.ru.md)**
+**[Русская версия](READMEru.md)**
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-lightgrey)
